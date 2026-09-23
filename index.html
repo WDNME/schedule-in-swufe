@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鲍宪宇 · 2026-2027学年第1学期课表（含上课时间）</title>
+<style>
+  :root{
+    --bg:#f5f7fb; --card:#ffffff; --ink:#1f2937; --ink2:#5b6675; --ink3:#8b95a5;
+    --line:#e3e8f0; --line2:#eef2f8; --accent:#2563eb;
+    --c1:#e8f1ff; --c1b:#3b82f6; --c2:#e9f8ef; --c2b:#10b981;
+    --c3:#fdf2e3; --c3b:#f59e0b; --c4:#fdeaea; --c4b:#ef4444;
+    --c5:#f0ebfd; --c5b:#8b5cf6; --c6:#e6f7f8; --c6b:#06b6d4;
+    --c7:#fdeef6; --c7b:#ec4899;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Microsoft YaHei","PingFang SC","Segoe UI",system-ui,sans-serif;
+    padding:26px 18px 54px;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1180px;margin:0 auto;}
+  header.hd{background:linear-gradient(120deg,#1d4ed8 0%,#3b82f6 55%,#60a5fa 100%);
+    color:#fff;border-radius:16px;padding:22px 26px;box-shadow:0 10px 26px rgba(37,99,235,.22);}
+  header.hd h1{margin:0 0 6px;font-size:23px;letter-spacing:.5px;}
+  header.hd .sub{font-size:13px;opacity:.93;letter-spacing:.4px;}
+  .chips{margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+    border-radius:999px;padding:3px 11px;font-size:12px;}
+  section{margin-top:24px;}
+  h2.sec{font-size:15px;margin:0 0 11px;color:var(--ink);font-weight:700;
+    display:flex;align-items:center;gap:8px;}
+  h2.sec::before{content:"";width:4px;height:15px;border-radius:2px;background:var(--accent);display:inline-block;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    box-shadow:0 2px 10px rgba(21,42,80,.05);overflow:hidden;}
+  /* 网格表 */
+  table.grid{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;}
+  table.grid th,table.grid td{border-right:1px solid var(--line2);border-bottom:1px solid var(--line2);
+    vertical-align:middle;font-size:12px;}
+  table.grid tr:last-child td,table.grid tr:last-child th{border-bottom:none;}
+  table.grid th:last-child,table.grid td:last-child{border-right:none;}
+  table.grid thead th{background:#f0f4fb;color:var(--ink2);font-weight:600;padding:9px 4px;
+    font-size:12.5px;border-bottom:1px solid var(--line);}
+  th.stage{background:#f7f9fd;color:var(--ink2);width:62px;text-align:center;
+    border-right:1px solid var(--line);}
+  .stage-name{font-weight:700;font-size:13px;color:#334155;}
+  .stage-time{font-size:10.5px;color:var(--ink3);margin-top:3px;line-height:1.3;}
+  th.period{background:#f7f9fd;width:74px;text-align:center;border-right:1px solid var(--line);}
+  .pn{display:block;font-weight:700;font-size:14px;color:#334155;}
+  .pt{display:block;font-size:10px;color:var(--ink3);margin-top:2px;letter-spacing:-.2px;}
+  td.empty{background:#fcfdff;height:52px;}
+  td.course{padding:8px 8px;text-align:left;vertical-align:top;position:relative;}
+  td.course::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;}
+  .c-name{font-weight:700;font-size:12.5px;line-height:1.35;margin-bottom:5px;color:#14283f;}
+  .c-time{font-weight:700;font-size:12px;color:#1d4ed8;margin-bottom:3px;letter-spacing:.2px;}
+  .c-meta{font-size:11px;color:var(--ink2);}
+  .c-meta2{font-size:10.5px;color:var(--ink3);margin-top:2px;line-height:1.4;}
+  td.c1{background:var(--c1);} td.c1::before{background:var(--c1b);}
+  td.c2{background:var(--c2);} td.c2::before{background:var(--c2b);}
+  td.c3{background:var(--c3);} td.c3::before{background:var(--c3b);}
+  td.c4{background:var(--c4);} td.c4::before{background:var(--c4b);}
+  td.c5{background:var(--c5);} td.c5::before{background:var(--c5b);}
+  td.c6{background:var(--c6);} td.c6::before{background:var(--c6b);}
+  td.c7{background:var(--c7);} td.c7::before{background:var(--c7b);}
+  /* 明细 */
+  .detail{padding:16px 18px 6px;}
+  .d-day{margin-bottom:14px;}
+  .d-day-title{font-size:13.5px;font-weight:700;color:#334155;padding-bottom:6px;
+    border-bottom:1px dashed var(--line);margin-bottom:9px;}
+  .d-day-title em{font-style:normal;font-size:11px;font-weight:500;color:var(--ink3);margin-left:8px;}
+  .empty-day .d-day-title{color:var(--ink3);font-weight:600;border-bottom:1px dashed var(--line2);}
+  .detail ul{list-style:none;margin:0;padding:0;display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:9px;}
+  .d-item{display:flex;gap:12px;padding:10px 12px;border-radius:10px;
+    border:1px solid var(--line2);background:#fff;}
+  .d-left{flex:0 0 92px;text-align:center;border-radius:8px;padding:6px 4px;background:#f4f7fc;}
+  .d-time{font-weight:700;font-size:12px;color:#1d4ed8;line-height:1.5;}
+  .d-period{font-size:10.5px;color:var(--ink3);margin-top:2px;}
+  .d-name{font-weight:700;font-size:13px;color:#14283f;line-height:1.4;}
+  .d-info{font-size:11px;color:var(--ink2);margin-top:4px;line-height:1.55;}
+  .d-item.c1 .d-left{background:var(--c1);} .d-item.c1{border-color:#cfe0fb;}
+  .d-item.c2 .d-left{background:var(--c2);} .d-item.c2{border-color:#c9ecd9;}
+  .d-item.c3 .d-left{background:var(--c3);} .d-item.c3{border-color:#f7e2bd;}
+  .d-item.c4 .d-left{background:var(--c4);} .d-item.c4{border-color:#f8cfcf;}
+  .d-item.c5 .d-left{background:var(--c5);} .d-item.c5{border-color:#ddd2fb;}
+  .d-item.c6 .d-left{background:var(--c6);} .d-item.c6{border-color:#c5ebef;}
+  .d-item.c7 .d-left{background:var(--c7);} .d-item.c7{border-color:#f9cfe3;}
+  /* 底部三栏 */
+  .foot{display:grid;grid-template-columns:1.15fr 1fr;gap:18px;align-items:start;}
+  table.ref{width:100%;border-collapse:collapse;font-size:12px;}
+  table.ref td{padding:6px 12px;border-bottom:1px solid var(--line2);color:var(--ink2);}
+  table.ref tr:last-child td{border-bottom:none;}
+  table.ref td:first-child{color:#334155;font-weight:600;width:60px;}
+  table.ref td:nth-child(2){width:80px;}
+  table.ref td:last-child{font-weight:600;color:#1d4ed8;}
+  .note{padding:14px 18px 18px;font-size:12.5px;color:var(--ink2);line-height:1.85;}
+  .note b{color:var(--ink);}
+  .tag{display:inline-block;background:#eef4ff;color:#2563eb;border-radius:6px;
+    padding:1px 7px;font-size:11px;margin-right:6px;}
+  footer{margin-top:22px;text-align:center;font-size:11.5px;color:var(--ink3);line-height:1.9;}
+  @media(max-width:900px){
+    .foot{grid-template-columns:1fr;}
+    table.grid{font-size:11px;}
+    .c-meta2{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hd">
+    <h1>鲍宪宇 · 课程表（含上课具体时间）</h1>
+    <div class="sub">2026-2027 学年第 1 学期 ｜ 学号 42611066 ｜ 依据教务课表 + 西南财经大学教学作息时间安排表整理</div>
+    <div class="chips">
+      <span class="chip">共 7 门课 · 8 个课堂</span>
+      <span class="chip">周一 ~ 周五有课</span>
+      <span class="chip">上课周次：3-17 周</span>
+      <span class="chip">最早 08:30 · 最晚 17:25</span>
+    </div>
+  </header>
+
+  <section>
+    <h2 class="sec">一周课表（已标注具体时间）</h2>
+    <div class="card">
+      <table class="grid">
+        <thead>
+          <tr><th class="stage">时段</th><th class="period">节次</th><th class="wd">星期一</th><th class="wd">星期二</th><th class="wd">星期三</th><th class="wd">星期四</th><th class="wd">星期五</th><th class="wd">星期六</th><th class="wd">星期日</th></tr>
+        </thead>
+        <tbody>
+<tr><td class="stage" rowspan="4"><div class="stage-name">上午</div><div class="stage-time">08:30-12:00</div></td><th class="period"><span class="pn">1</span><span class="pt">08:30-09:15</span></th><td class="empty"></td><td class="empty"></td><td class="course c1" rowspan="2"><div class="c-name">综合英语Ⅲ</div><div class="c-time">08:30-10:10</div><div class="c-meta">第1-2节 · 3-17周</div><div class="c-meta2">经世楼 B201<br>荣雯轩 · 通基 2学分</div></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+<tr><th class="period"><span class="pn">2</span><span class="pt">09:25-10:10</span></th><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+<tr><th class="period"><span class="pn">3</span><span class="pt">10:20-11:05</span></th><td class="empty"></td><td class="course c2" rowspan="2"><div class="c-name">高等数学Ⅰ</div><div class="c-time">10:20-12:00</div><div class="c-meta">第3-4节 · 3-17周</div><div class="c-meta2">颐德楼 H112<br>王祥 · 通基 5学分</div></td><td class="empty"></td><td class="course c3" rowspan="2"><div class="c-name">中国传统文化概论</div><div class="c-time">10:20-12:00</div><div class="c-meta">第3-4节 · 3-17周</div><div class="c-meta2">经世楼 C502<br>崔雪茹 · 通核 2学分</div></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+<tr><th class="period"><span class="pn">4</span><span class="pt">11:15-12:00</span></th><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+<tr><td class="stage" rowspan="5"><div class="stage-name">下午</div><div class="stage-time">13:00-17:25</div></td><th class="period"><span class="pn">5</span><span class="pt">13:00-13:45</span></th><td class="empty"></td><td class="empty"></td><td class="course c4" rowspan="3"><div class="c-name">习近平新时代中国特色社会主义思想概论</div><div class="c-time">13:00-15:35</div><div class="c-meta">第5-7节 · 3-17周</div><div class="c-meta2">颐德楼 H208<br>周洁 · 思政 3学分</div></td><td class="course c2" rowspan="3"><div class="c-name">高等数学Ⅰ</div><div class="c-time">13:00-15:35</div><div class="c-meta">第5-7节 · 3-17周</div><div class="c-meta2">颐德楼 H112<br>王祥 · 通基 5学分</div></td><td class="course c5" rowspan="3"><div class="c-name">程序设计（C语言）</div><div class="c-time">13:00-15:35</div><div class="c-meta">第5-7节 · 3-17周</div><div class="c-meta2">经世楼 D106<br>王磊 · 通基 3学分</div></td><td class="empty"></td><td class="empty"></td></tr>
+<tr><th class="period"><span class="pn">6</span><span class="pt">13:55-14:40</span></th><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+<tr><th class="period"><span class="pn">7</span><span class="pt">14:50-15:35</span></th><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+<tr><th class="period"><span class="pn">8</span><span class="pt">15:45-16:30</span></th><td class="course c6" rowspan="2"><div class="c-name">瑜伽</div><div class="c-time">15:45-17:25</div><div class="c-meta">第8-9节 · 3-17周</div><div class="c-meta2">体育馆二楼形体室2区<br>毛艳 · 通基 1学分</div></td><td class="empty"></td><td class="course c7" rowspan="2"><div class="c-name">大学生心理健康与人生发展</div><div class="c-time">15:45-17:25</div><div class="c-meta">第8-9节 · 3-17周</div><div class="c-meta2">颐德楼 H201<br>伍泽莲 · 通基 2学分</div></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+<tr><th class="period"><span class="pn">9</span><span class="pt">16:40-17:25</span></th><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td><td class="empty"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec">逐日明细</h2>
+    <div class="card detail">
+<div class="d-day"><div class="d-day-title">星期一<em>1 门课</em></div><ul><li class="d-item c6"><div class="d-left"><div class="d-time">15:45-17:25</div><div class="d-period">第8-9节</div></div><div class="d-right"><div class="d-name">瑜伽</div><div class="d-info">毛艳 ｜ 体育馆二楼形体室2区 ｜ 通基 ｜ 1 学分 ｜ 3-17周</div></div></li></ul></div>
+<div class="d-day"><div class="d-day-title">星期二<em>1 门课</em></div><ul><li class="d-item c2"><div class="d-left"><div class="d-time">10:20-12:00</div><div class="d-period">第3-4节</div></div><div class="d-right"><div class="d-name">高等数学Ⅰ</div><div class="d-info">王祥 ｜ 颐德楼 H112 ｜ 通基 ｜ 5 学分 ｜ 3-17周</div></div></li></ul></div>
+<div class="d-day"><div class="d-day-title">星期三<em>3 门课</em></div><ul><li class="d-item c1"><div class="d-left"><div class="d-time">08:30-10:10</div><div class="d-period">第1-2节</div></div><div class="d-right"><div class="d-name">综合英语Ⅲ</div><div class="d-info">荣雯轩 ｜ 经世楼 B201 ｜ 通基 ｜ 2 学分 ｜ 3-17周</div></div></li><li class="d-item c4"><div class="d-left"><div class="d-time">13:00-15:35</div><div class="d-period">第5-7节</div></div><div class="d-right"><div class="d-name">习近平新时代中国特色社会主义思想概论</div><div class="d-info">周洁 ｜ 颐德楼 H208 ｜ 思政 ｜ 3 学分 ｜ 3-17周</div></div></li><li class="d-item c7"><div class="d-left"><div class="d-time">15:45-17:25</div><div class="d-period">第8-9节</div></div><div class="d-right"><div class="d-name">大学生心理健康与人生发展</div><div class="d-info">伍泽莲 ｜ 颐德楼 H201 ｜ 通基 ｜ 2 学分 ｜ 3-17周</div></div></li></ul></div>
+<div class="d-day"><div class="d-day-title">星期四<em>2 门课</em></div><ul><li class="d-item c3"><div class="d-left"><div class="d-time">10:20-12:00</div><div class="d-period">第3-4节</div></div><div class="d-right"><div class="d-name">中国传统文化概论</div><div class="d-info">崔雪茹 ｜ 经世楼 C502 ｜ 通核 ｜ 2 学分 ｜ 3-17周</div></div></li><li class="d-item c2"><div class="d-left"><div class="d-time">13:00-15:35</div><div class="d-period">第5-7节</div></div><div class="d-right"><div class="d-name">高等数学Ⅰ</div><div class="d-info">王祥 ｜ 颐德楼 H112 ｜ 通基 ｜ 5 学分 ｜ 3-17周</div></div></li></ul></div>
+<div class="d-day"><div class="d-day-title">星期五<em>1 门课</em></div><ul><li class="d-item c5"><div class="d-left"><div class="d-time">13:00-15:35</div><div class="d-period">第5-7节</div></div><div class="d-right"><div class="d-name">程序设计（C语言）</div><div class="d-info">王磊 ｜ 经世楼 D106 ｜ 通基 ｜ 3 学分 ｜ 3-17周</div></div></li></ul></div>
+<div class="d-day empty-day"><div class="d-day-title">星期六<em>无课</em></div></div>
+<div class="d-day empty-day"><div class="d-day-title">星期日<em>无课</em></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="sec">补充信息</h2>
+    <div class="foot">
+      <div class="card">
+        <table class="ref">
+          <tr><td>时段</td><td>节次</td><td>起止时间</td></tr>
+<tr><td>上午</td><td>第01节</td><td>08:30-09:15</td></tr>
+          <tr><td></td><td>第02节</td><td>09:25-10:10</td></tr>
+          <tr><td></td><td>第03节</td><td>10:20-11:05</td></tr>
+          <tr><td></td><td>第04节</td><td>11:15-12:00</td></tr>
+          <tr><td>下午</td><td>第05节</td><td>13:00-13:45</td></tr>
+          <tr><td></td><td>第06节</td><td>13:55-14:40</td></tr>
+          <tr><td></td><td>第07节</td><td>14:50-15:35</td></tr>
+          <tr><td></td><td>第08节</td><td>15:45-16:30</td></tr>
+          <tr><td></td><td>第09节</td><td>16:40-17:25</td></tr>
+          <tr><td>晚上</td><td>第10节</td><td>18:30-19:15</td></tr>
+          <tr><td></td><td>第11节</td><td>19:25-20:10</td></tr>
+          <tr><td></td><td>第12节</td><td>20:20-21:05</td></tr>
+        </table>
+      </div>
+      <div class="card note">
+        <div><span class="tag">其他课程</span><b>国家安全教育</b>（闫开龙，共 8 周，第 1-8 周）</div>
+        <div style="margin-top:6px">本课程为在线学习，需登录 <b>swufe.yuketang.cn</b> 完成，咨询电话 87092339。</div>
+        <div style="margin-top:10px"><span class="tag">说明</span>▲ 表示课堂，★ 表示实践；周六、周日无课。</div>
+        <div style="margin-top:6px">同一门《高等数学Ⅰ》分<b>周二第 3-4 节</b>与<b>周四第 5-7 节</b>两次授课，请勿漏记。</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    数据来源：鲍宪宇(2026-2027-1)课表.pdf ｜ 时间来源：西南财经大学教学作息时间安排表<br>
+    课表打印时间 2026-09-04 ｜ 整理生成于 2026-09-22
+  </footer>
+
+</div>
+</body>
+</html>
